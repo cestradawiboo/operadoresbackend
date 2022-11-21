@@ -1,6 +1,7 @@
 /* Route Files */
 const urlApi = require("../config/routes/urlbase");
 const cuestionarioRoutes = require("./cuestionario/cuestionario.routes");
+const authAdminRoutes = require("./administrador/auth/auth.routes");
 /* Route Files */
 
 const express = require("express");
@@ -12,5 +13,6 @@ router.get("/", function (req, res, next) {
 });
 
 router.use(`${urlApi.api_url_base}/interview`, cuestionarioRoutes);
+router.use(`${urlApi.api_url_base}/admin`, authAdminRoutes);
 
 module.exports = router;
