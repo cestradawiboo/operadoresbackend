@@ -8,17 +8,28 @@ const debug = require('debug')('operadoresexpress:server');
 const http = require('http');
 const https = require('https');
 const fs = require('fs');
+const socketIo = require("socket.io");
 
 const port = normalizePort(process.env.PORT || '2525');
 app.set('port', port);
+
 /*
 let httpsOptions = {
-  pfx: fs.readFileSync('./certificado/wildcard_2022.pfx'),
-  passphrase: 'P4$$w0rd'
+  cert: fs.readFileSync('./cert/certi.crt'),
+  key: fs.readFileSync('./cert/operadores.key'),
 }
+
 const secureServer = https.createServer(httpsOptions, app);
 */
 const nonSecureServer = http.createServer(app);
+
+const io = socketIo(nonSecureServer, { cors: {origin: "*"}});
+
+app.use((req, res, next) => {
+  req.io = io;
+  console.log("Socket server ready");
+  return next();
+});
 
 nonSecureServer.listen(port, () => {
   console.log(`Server Ready on HTTP ${port}`);
