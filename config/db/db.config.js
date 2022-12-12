@@ -1,5 +1,5 @@
 module.exports = {
-  HOST: "dev.operadores.com",
+  HOST: "localhost",
   USER: "dev",
   PASSWORD: "Zoe.kameron1",
   DB: "trans164_sistema",

@@ -28,4 +28,7 @@ app.use(cookieParser());
 /* Encoding Requets */
 const routes = require("./routes/index");
 app.use("/", routes);
+
+const db = require("./models/operadoresDB");
+db.sequelize.sync();
 module.exports = app;
