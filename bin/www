@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 });
 
 nonSecureServer.listen(port, () => {
-  console.log(`Server Ready on HTTP ${port}`);
+  console.log(`Server Ready on HTTP ${port}, stand by`);
 });
 nonSecureServer.on('error', onError);
 nonSecureServer.on('listening', onListening);
